@@ -5,6 +5,8 @@
 //TODO: create functional audioservice handler
 //      lossless audioservice, audioAPI
 //      manage clientID in connectedDB
+//      socket routing through express
+//      fix client.onconnect to broadcast metaID
 //+++++++++++++++++++++++++++++++++++++++++++++
 
 
@@ -23,14 +25,15 @@ var bs = BinaryServer({server: server});
 app.use(express.static(__dirname+ '/public'));
 
 // Wait for new user connections
+// Client onConnect:
 bs.on('connection', function(client){
   console.log('Client has connected to remote server')
-  client.on('connection', function(broadcast, client, mongoose.send){
+  client.on('connection', function(broadcast, client, mongoose){
     username: client.username
     message: client.data
     var addedUser = true;
     mongoose.addedUser('##CLIENTID');
-    
+
   }
 
   // Incoming stream from browsers
