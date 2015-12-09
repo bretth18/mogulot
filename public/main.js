@@ -16,9 +16,10 @@ $(function(){
   var $currentInput = $emailInput.focus();
 
   var server = BinaryServer();
-
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //TODO: Define function call badEmail with list of invalids
 //      Append userEmail into mongooseDB for collection purposes
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
   function adduserEmail (data) {
     var message = 'Sign up';
@@ -29,6 +30,30 @@ $(function(){
       mesage += "Thank you for registering, " + inputMessage;
     }
     log(inputMessage);
+  });
+
+  //Begin call to stream page
+  function addUserToStream (steam, data, user) {
+    if (adduserEmail === true, i=0, i++){
+      page.load(.stream);
+      console.log('Client has connected to remote stream')
+      audioAPI.onConnect(load.playerArea);
+      log(playerArea);
+      return;
+    }
+    else{
+      return;
+    }
+  //Display current track from stream
+  function displayTrackInfo (stream, audioAPI, data) {
+    getTrackInfo(audioAPI)
+    AppendText.trackinfo(track.title);
+    console.log('Now Playing ' + track.title)
+    track.Playing = true;
+    log('');
+  }
+
+
 
     }
   }
