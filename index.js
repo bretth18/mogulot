@@ -57,8 +57,13 @@ bs.on('connection', function(client){
         console.log('Client has connected to the remote stream');
         stream.write({cdn: stream.id / meta.id});
         client.log('##CLIENTID', function(clientlog, meta));
+        
+
 
       }
+    var client.onConnect = require(remote.upstream).Audioservice;
+      console.log('Client has connected to remote server');
+
       }
     // Send progress back
     stream.on('data', function(data){
