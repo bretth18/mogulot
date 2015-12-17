@@ -13,6 +13,7 @@
 var http = require('http');
 var app = require('express')();
 var connectedDB = require('mongoose');
+var client = require('streamer');
 
 // create a server with the express app as a listener
 var server = http.createServer(app).listen(9000);
@@ -57,7 +58,7 @@ bs.on('connection', function(client){
         console.log('Client has connected to the remote stream');
         stream.write({cdn: stream.id / meta.id});
         client.log('##CLIENTID', function(clientlog, meta));
-        
+
 
 
       }

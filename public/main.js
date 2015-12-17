@@ -51,7 +51,14 @@ $(function(){
     console.log('Now Playing ' + track.title)
     track.Playing = true;
     log('');
-  }
+  });
+
+  $audioPlayer (function () {
+    displayTrackInfo();
+    audioAPI.start.stream
+  });
+
+  })
 
 
 
