@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>mog-demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/normalize.css">
+
+
+        <style>
+      /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
+      @import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic);
+* {
+		font-family: "Roboto", Arial, sans-serif;
+}
+
+body {
+		background-color: #ebebeb;
+		padding: 20px;
+}
+
+h1 {
+		text-align: center;
+		font-weight: 100;
+		color: #444;
+		margin-bottom: 10px;
+}
+
+h2 {
+		text-align: center;
+		font-weight: 100;
+		color: #999;
+		margin-bottom: 40px;
+		margin-top: 0;
+}
+
+p {
+		text-align: center;
+		font-weight: 300;
+		color: #aaa;
+		margin-top: 40px;
+		line-height: 1.5;
+}
+
+.left {
+		float: left;
+}
+
+.right {
+		float: right;
+}
+
+.card {
+		max-width: 600px;
+		margin: auto;
+		border-radius: 4px;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.card .card-image {
+		height: 120px;
+		width: 100%;
+		background-image: url('http://www.altmaniac.com/uploads/5/6/4/4/56442221/8849826_orig.jpg');
+		background-size: cover;
+		border-radius: 4px 4px 0 0;
+		transition: height 0.2s ease;
+}
+
+.card-slider {
+		height: 3px;
+		background-color: #ccc;
+}
+
+.card-slider .progress-bar {
+		height: 3px;
+		background-color: #fc6727;
+		width: 0%;
+		animation: play 232s linear 1s infinite;
+}
+
+.card-slider .progress-bar.paused {
+		animation-play-state: paused;
+}
+
+.card-content {
+		background-color: white;
+		border-radius: 0 0 4px 4px;
+}
+
+.times {
+		font-size: 8px;
+		color: #999;
+		padding: 5px 7px;
+}
+
+.player {
+		padding: 10px 15px 15px;
+}
+
+.player:after {
+		content: "";
+		display: table;
+		clear: both;
+}
+
+.player .play {
+		margin-right: 10px;
+		background-color: #2b2933;
+		border: none;
+		outline: none;
+		border-radius: 50%;
+		color: white;
+		width: 40px;
+		height: 40px;
+		font-weight: 900;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+		transition: box-shadow 0.2s ease;
+}
+
+.player .play:hover,
+.player .play:focus {
+		box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.player .play:active {
+		box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.player .play i {
+		display: none;
+		position: relative;
+		top: 2px;
+}
+
+.player .play.paused i {
+		display: initial;
+}
+
+.player .play.paused span {
+		display: none;
+}
+
+.player .song-title {
+		font-weight: 300;
+		margin: 5px 0 0 0;
+		padding: 0;
+		line-height: 1;
+		font-size: 18px;
+		color: #777;
+}
+
+.player .song-artist {
+		margin: 3px 0 0 0;
+		padding: 0;
+		line-height: 1;
+		font-size: 12px;
+		color: #ccc;
+		font-weight: 300;
+		text-overflow: ellipsis;
+}
+
+.player .right {
+		margin-top: 3px;
+		margin-left: 5px;
+}
+
+.player .right i {
+		color: #aaa;
+		font-size: 20px;
+		transition: color 0.2s ease;
+}
+
+.player .right:hover i {
+		color: #2b2933;
+		cursor: pointer;
+}
+
+@media (min-width:450px) {
+		.card .card-image {
+				height: 240px;
+		}
+}
+
+@media (min-width:900px) {
+		.card .card-image {
+				height: 360px;
+		}
+}
+
+@keyframes play {
+		from {
+				width: 0%;
+		}
+		to {
+				width: 100%;
+		}
+}
+    </style>
+
+
+        <script src="js/prefixfree.min.js"></script>
+
+
+  </head>
+
+  <body>
+
+    <audio id="track">
+		<source src="http://picosong.com/cdn/df35791adb00cc88266546dc94d6324c.mp3">
+				Your browser does not support the audio element.
+</audio>
+<h1>mogulot - a0.0.1</h1>
+<h2>lossless internet radio</h2>
+<div class="card">
+		<div class="card-image"></div>
+		<div class="card-slider">
+				<div class="progress-bar" id="loading"></div>
+		</div>
+		<div class="card-content">
+				<div class="times">
+						<div class="left" id="time"></div>
+						<div class="right">3:57</div>
+				</div>
+				<div class="player">
+						<button class="play left" id="play">
+								<i class="material-icons">play_arrow</i>
+								<span>| |</span>
+						</button>
+						<div class="left">
+								<div class="song-title">Dear Skorpio Magazine</div>
+								<div class="song-artist">Neon Indian</div>
+						</div>
+						<div class="right">
+								<i class="material-icons">fast_forward</i>
+						</div>
+						<div class="right">
+								<i class="material-icons">fast_rewind</i>
+						</div>
+						<div class="right">
+								<i class="material-icons">repeat</i>
+						</div>
+				</div>
+		</div>
+</div>
+<p>visual demo by bretth18</p>
+
+        <script src="js/index.js"></script>
+
+
+
+
+  </body>
+</html>
