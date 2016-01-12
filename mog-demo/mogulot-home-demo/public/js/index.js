@@ -12,15 +12,15 @@ var codepen_postmessage_css_hack = new function(){
 
 
 $(document).ready(function(){
-  
+
   $('.colorplay').remove();
-  
+
   biscuit.ready(function(){
     // everything is ready, yo
-    
+
     // our ghetto logging function
     var log = function(msg){$('#status').append('<div>'+msg+'</div>');};
-    
+
     // function to update the song info
     var updateInfo = function(artist,title,img){
       $('.controls').remove();
@@ -28,14 +28,14 @@ $(document).ready(function(){
       var display = ((typeof title != 'undefined' && title.length==0)?artist:artist+' - '+title);
       $('.center-column-container').append('<div class="controls fadeIn"><div class="songinfo">'+display+'</div></div>');
     };
-    
+
     //intercept the form submit
     $('.center-column').on('submit','#form',function(e){
       e.preventDefault();
       var q = this.search.value;
       this.search.value = '';
       this.search.blur();
-      
+
       log(q);
       biscuit.searchAndPlay(q,function(data){
         updateInfo(data.artist,data.title);
@@ -49,11 +49,11 @@ $(document).ready(function(){
       //$('#background').removeClass('opaque');
       log('blur');
     });
-    
+
     $('.center-column').on('click','.songinfo',function(e){
       $('body').hasClass('playing')?biscuit.pause():biscuit.play();
     });
-    
+
     biscuit.on('play',function(){
       $('body').addClass('playing');
     });
@@ -63,28 +63,28 @@ $(document).ready(function(){
     biscuit.on('ended',function(){
       $('.controls').fadeOut(600);
     });
-    
+
     // lol hack at animating the center-column's height
     var heightPoll = setInterval(function(){
       var e = document.getElementsByClassName('center-column')[0];
       var c = document.getElementsByClassName('center-column-container')[0];
       e.style.height = c.scrollHeight+'px';
     },10);
-    
+
     // setup presets
     var presetcontainer = $('#page .presets');
-    presetcontainer.append('<div class="preset" data-q="coldplay sky full of stars">Coldplay</div>');
-    presetcontainer.append('<div class="preset" data-q="avicii addicted to you radio">Avicii</div>');
+    presetcontainer.append('<div class="preset" data-q="chrome sparks marijuana">Chrome Sparks</div>');
+    presetcontainer.append('<div class="preset" data-q="mt. ossa bongo">MT. OSSA</div>');
     presetcontainer.append('<div class="preset" data-q="tove lo habits">Tove Lo</div>');
     $('.center-column').on('click','.presets .preset',function(e){
       biscuit.searchAndPlay($(this).data('q'),function(data){
         updateInfo(data.artist,data.title);
       });
     });
-    
+
     // we're ready!
     $('#status').html('ready');
-    
+
     // kick it off in an animation
     $({count:0}).animate({count:100000}, {
       duration: 10000,
@@ -123,7 +123,7 @@ $(document).ready(function(){
           }
         }else if(fx.pos < 0.76){
         }else if(fx.pos < 0.77){
-          $('.searchgreet, .presetgreet').fadeOut(500);
+          $('.searchgreet, .presetgreet').fadeOut(800);
         }else if(fx.pos < 0.78){
         }else if(fx.pos < 0.79){
         }
