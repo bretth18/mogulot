@@ -3,7 +3,8 @@
 	"version": "0.0.2",
 	"description": "demo for mogulotHome",
 	"keywords": [
-		"mogulot","radio"
+		"mogulot",
+		"radio"
 	],
 	"license": "MIT",
 	"author": "brett henderson",
