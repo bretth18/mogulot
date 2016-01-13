@@ -74,7 +74,7 @@ $(document).ready(function(){
     // setup presets
     var presetcontainer = $('#page .presets');
     presetcontainer.append('<div class="preset" data-q="chrome sparks marijuana">Chrome Sparks</div>');
-    presetcontainer.append('<div class="preset" data-q="mt. ossa bongo">MT. OSSA</div>');
+    presetcontainer.append('<div class="preset" data-q="mt. ossa time is a seed">MT. OSSA</div>');
     presetcontainer.append('<div class="preset" data-q="tove lo habits">Tove Lo</div>');
     $('.center-column').on('click','.presets .preset',function(e){
       biscuit.searchAndPlay($(this).data('q'),function(data){
