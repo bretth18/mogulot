@@ -108,9 +108,10 @@ $(document).ready(function(){
           if($('.center-column-container > .presets').length == 0){
             $('.center-column-container').append('<div class="presets flex fadeIn"></div>');
             var presetcontainer = $('#page .presets');
-            presetcontainer.append('<div class="preset" data-q="chrome sparks marijuana">Chrome Sparks</div>');
-            presetcontainer.append('<div class="preset" data-q="mt. ossa bongo">MT. OSSA</div>');
-            presetcontainer.append('<div class="preset" data-q="leon vynehall house of dupree">Leon Vynehall</div>');
+            //TODO: make a fucking db for presets cause god damn i am lazy and this shouldnt be hard coded
+            presetcontainer.append('<div class="preset" data-q="canyons apples and pears">Canyons</div>');
+            presetcontainer.append('<div class="preset" data-q="mt. ossa time is a seed">MT. OSSA</div>');
+            presetcontainer.append('<div class="preset" data-q="hayden james embrace">Hayden James</div>');
             presetcontainer.append('<div class="preset" data-q="dirty art club jetlag">Dirty Art Club</div>');
           }
         }else if(fx.pos < 0.51){
